@@ -2,6 +2,8 @@
 
 An opinionated set of simple Docker containers with Mbsync ([Isync](https://isync.sourceforge.io/)) and [Supercronic](https://github.com/aptible/supercronic).
 
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/cewood/mbsync-docker/main)](https://github.com/cewood/mbsync-docker/actions) [![GitHub release (latest by date)](https://img.shields.io/github/v/release/cewood/mbsync-docker)](https://github.com/cewood/mbsync-docker/releases) [![Docker Image Version (latest by date)](https://img.shields.io/docker/v/cewood/mbsync)](https://hub.docker.com/r/cewood/mbsync/tags?page=1&ordering=last_updated) ![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/cewood/mbsync)
+
 
 ## Usage
 
