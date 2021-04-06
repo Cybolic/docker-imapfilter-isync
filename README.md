@@ -1,8 +1,8 @@
-# Mbsync Docker
+# Docker IMAPFilter + Isync
 
-An opinionated set of simple Docker containers with Mbsync ([Isync](https://isync.sourceforge.io/)) and [Supercronic](https://github.com/aptible/supercronic).
+An opinionated set of simple Docker containers with [IMAPFilter](https://github.com/lefcha/imapfilter), [Isync](https://isync.sourceforge.io/) and [Supercronic](https://github.com/aptible/supercronic).
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/cewood/mbsync-docker/main)](https://github.com/cewood/mbsync-docker/actions) [![GitHub release (latest by date)](https://img.shields.io/github/v/release/cewood/mbsync-docker)](https://github.com/cewood/mbsync-docker/releases) [![Docker Image Version (latest by date)](https://img.shields.io/docker/v/cewood/mbsync)](https://hub.docker.com/r/cewood/mbsync/tags?page=1&ordering=last_updated) ![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/cewood/mbsync)
+Forked from https://github.com/cewood/mbsync-docker to add imapfilter to the image.
 
 
 ## Usage
@@ -40,38 +40,3 @@ services:
       org.label-schema.group: "backups"
 ```
 
-
-## Image variants
-
-Currently the following distributions are included:
-
- - Alpine 3.12
- - Debian 10.7 (Slim variant)
- - Ubuntu 20.04 (LTS release)
-
-
-## Supported architectures
-
-Currently the following architectures are built for each image variant:
-
- - linux/amd64
- - linux/arm64
- - linux/arm/v7
-
-
-# Frequently Asked Questions
-## Why another Mbsync Docker Image
-
-There was already a number of Mbsync/Isync images available on the Docker Hub, but unfortunately they all had their various short comings. Most weren't built via a Continuous Integration tool, none had any image tags, and none provided the Dockerfile or a link to their SCM tool of choice to inspect the image contents and build. Thus I decided to make my own set of images for Mbsync to address all these points, and here we are.
-
-
-## Why isn't the image named Isync
-
-Great question! Since most people use Isync via the Mbsync command, I decided to name the image Mbsync, as this appears to be what most people search for and are familiar with. And the project itself states:
-
-> While isync is the project name, mbsync is the current executable name; this change was necessary because of massive changes in the user interface. An isync executable still exists; it is a compatibility wrapper around mbsync.
-
-
-## Why Supercronic and not just regular cron
-
-If we were running a normal system in an interactive manner, then normal Cron or friends (Anacron, Fcron, etc) would be fine choices. However in a containerised environment, these traditional cron implementations have some downsides, that make Supercronic a better fit. Namely the printing of jobs output to stdout, hence when running Supercronic as the ENTRYPOINT/CMD I can see the output of the jobs being run without having to jump through any hoops. There are undoubtedly other features that Supercronic brings with it that make it a better fit for use in containers, but this was the main motivator for me.

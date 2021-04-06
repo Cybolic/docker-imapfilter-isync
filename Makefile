@@ -1,10 +1,12 @@
 ARCH               = $(or $(shell printenv ARCH),$(shell echo linux/amd64,linux/arm64,linux/arm/v7))
 BUILD_FLAGS        = $(or $(shell printenv BUILD_FLAGS),--pull)
 CREATED            = $(or $(shell printenv CREATED),$(shell date --rfc-3339=seconds))
-DISTS              = $(or $(shell printenv DISTS),alpine debian ubuntu)
+# not enabling these until alpine adds imapfilter
+# DISTS              = $(or $(shell printenv DISTS),alpine debian ubuntu)
+DISTS              = $(or $(shell printenv DISTS),debian)
 DOCKER_INTERACTIVE = $(if $(shell printenv GITHUB_ACTIONS),-t,-it)
 GIT_REVISION       = $(or $(shell printenv GIT_REVISION), $(shell git describe --match= --always --abbrev=7 --dirty))
-IMAGE              = $(or $(shell printenv IMAGE),cewood/mbsync)
+IMAGE              = $(or $(shell printenv IMAGE),cybolic/imapfilter-isync)
 IMAGE_TAG          = $(or $(shell printenv IMAGE_TAG),${DIST}_${TAG_REVISION})
 TAG_REVISION       = $(or $(shell printenv TAG_REVISION),${GIT_REVISION})
 
